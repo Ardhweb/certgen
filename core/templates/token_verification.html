@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<div class="d-flex justify-content-center">
+    <div class="p-2 flex-fill">
+        <form method="post">
+            {% csrf_token %}
+           
+            {{ form.as_p }}
+            <input class="btn btn-info fw-semibold" type="submit" value="Submit&Verify">
+        </form>
+    </div>
+</div>
+</div>
+
+<a class="btn btn-info m-3" href="/">Back Home</a>
+{% endblock content %}
+
+
+
+

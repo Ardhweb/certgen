@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="m-2 p-1">
+    <h3>Create New Certificate</h3>
+    <div class="d-flex flex-row justify-content-center mb-3">
+        <div class="flex-fill justify-content-center">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="btn btn-info fw-bold" type="submit" value="Submit">
+            </form>
+        </div>
+      </div>
+</div>
+{% endblock content %}

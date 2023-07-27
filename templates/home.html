@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-flex m-3 p-3">
+    <a class="btn btn-danger m-1" href="{% url 'create_new_certificate' %}">Certificate Generate</a>
+    <a class="btn btn-warning m-1" href="{% url 'verify_token' %}">Verify Certificate</a>
+</div>
+
+<div class="m-3 p-3">
+{% if request.user.is_authenticated %}
+    <ul class="list-group m-3 w-25">
+        <h4 class="">My Certificate's</h4>
+        
+        {% if not list_mycert and not list_mycert.user == request.user %}
+        <li class="list-group-item">
+         None Certificate
+        </li>
+
+        {% else %}
+        {% for list_mycert in list_mycert  %}    
+        <li class="list-group-item object-fit-contain border rounded">
+            <a href="{% url 'view_certificate_file' list_mycert.id %}" class="nav-link link-opacity-75-hover fw-bold text-black ">{{list_mycert.name}} {{list_mycert.certificate_no}}</a>
+            <a href="{% url 'generate_token' list_mycert.id %}" class="btn btn-sm btn-secondary">Generate Token</a>
+            <a href="{% url 'view_certificate_file' list_mycert.id %}" class="btn btn-sm btn-secondary">View</a>
+            <span>Created:{{list_mycert.created_at|date:'Y/m/d'}}</span>
+        </li>
+        {% endfor %}
+        {% endif %}
+{% endif %}
+      </ul>
+</div>
+
+
+{% if messages %}
+    {% for message in messages %}
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Alert Message</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            {{message}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+{% endif %}
+
+<script>
+  $(document).ready(function() {
+    if ($('#exampleModal').length) {
+        $('#exampleModal').modal('show');
+    }
+});
+</script>
+
+
+
+{% endblock content %}

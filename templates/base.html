@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block title %}{% endblock title %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+    
+      <!--Load $Jquery-->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <style>
+      @media print{
+        @page{
+        size:landscape;
+        /*margin:initial;*/
+        margin:0.1px;
+        }
+        
+        .outer-comp{
+         border:22px solid blue;
+      border-width:20px;
+         /*height:45.70rem;*/
+         height:41.23rem;
+         /*padding:12px 12px 12px 12px;*/
+         padding:24px;
+       
+        
+        
+           
+        }
+        
+        .inner-comp{
+         border:4px solid black;
+         /*height:auto;
+         padding:5px;*/
+         
+         margin:6px;
+         padding:16px;
+         height:36.70rem;
+         
+        }
+        
+        .da_certother{
+        font-family:Open Sans;
+        font-size:22px;
+        text-wrap:wrap;
+        }
+        
+        .header-data{
+         font-size:41.34px;
+         ; /*top ,right, bottom, left*/
+         font-family:Great Vibes, Verdana, Sans-Serif;
+         text-align:center;
+         margin-bottom:18px;
+         
+        }
+        
+         .main-sub{
+        font-family:Open Sans;
+        line-height:2;
+        font-size:22px;
+        font-weight:500;
+        text-wrap:wrap;
+        }
+        
+        .f_container {
+        display: flex;
+        flex-direction: row;
+        bottom:5px;
+        
+        }
+        .items_div {
+        flex: 1 1 0;
+        /*border:1px solid black;*/
+        width: 100px;
+        height: 100px;
+        text-align:center;
+        /*spaciel put items to bottom of inner*/
+        margin-top:4rem;
+         /*height: 100px;*/
+         height:auto;
+        }
+        
+       .sign_item{
+         width:8rem;
+         height:5rem;
+         float:left;
+         /*margin:0.5rem;
+         padding:0.3rem;*/
+        }
+        
+        .seal_sta{
+         width:7rem;
+         height:7rem;
+         margin:4px;
+         margin-right:4.5rem;
+         padding:3px;
+         float:right;
+        }
+        
+      }
+      
+      .outer-comp{
+         border:22px solid blue;
+         border-width:30px;
+         /*height:45.70rem;*/
+    
+         /*padding:12px 12px 12px 12px;*/
+         padding:24px;
+       
+        
+        
+           
+        }
+        
+        .inner-comp{
+         border:4px solid black;
+         /*height:auto;
+         padding:5px;*/
+         
+         margin:4px;
+         padding:12px;
+         height:36.70rem;
+         
+        }
+        
+        .da_certother{
+        font-family:Open Sans;
+        font-size:16px;
+        text-wrap:wrap;
+        }
+        
+        .header-data{
+         font-size:41.34px;
+         ; /*top ,right, bottom, left*/
+         font-family:Great Vibes, Verdana, Sans-Serif;
+         text-align:center;
+         margin-bottom:18px;
+         
+        }
+        
+        .main-sub{
+        font-family:Open Sans;
+        line-height:2;
+        font-size:16px;
+        font-weight:500;
+        text-wrap:wrap;
+        }
+        
+        .f_container {
+        display: flex;
+        flex-direction: row;
+        bottom:5px;
+       
+        
+        
+        }
+        .items_div {
+        flex: 1 1 0;
+        /*border:1px solid black;*/
+        width: 100px;
+        /*height: 100px;*/
+        height:auto;
+        text-align:center;
+        
+        /*spaciel put items to bottom of inner*/
+        margin-top:4rem;
+        }
+        
+        .signature{
+        text-align:left;
+        font-size:18px;
+        
+        font-family:Open Sans;
+        padding:4px;
+        }
+        .sign_item{
+         width:8rem;
+         height:auto;
+         float:left;
+         /*margin:0.5rem;
+         padding:0.3rem;*/
+        }
+        
+        .seal_sta{
+         width:7rem;
+         height:auto;
+         margin-right:4.5rem;
+        
+         float:right;
+        }
+        
+      </style>
+    
+  </head>
+  <body>
+   
+    <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+      <!-- Navbar content -->
+      <div class="container-fluid text-center ">
+        <a class="navbar-brand fw-bold" href="#">CertGen</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+            <a class="nav-link" href="{% url 'create_new_certificate' %}">Certificate Generator</a>
+            <a class="nav-link" href="{% url 'verify_token' %}">Verify Certificate</a>
+            {% if request.user.is_authenticated %}
+            <a class="nav-link overflow-hidden" href="#">user: Hi ,{{ request.user.username }}</a>
+            {% if request.user.is_superuser %}
+            <a class="nav-link " href="{% url 'admin:index' %}">admin panel</a>
+             {% endif %}
+            <a class="nav-link text-white" href="{% url 'account:logout' %}">Logout</a>
+            {% else %}
+            <a class="nav-link" href="{% url 'account:signup' %}">Sign Up</a>
+            <a class="nav-link" href="{% url 'account:login' %}">Login</a>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    {% block content %}
+    
+    
+    {% endblock content %}
+
+
+    
+    <div class="bg-warning-subtle">
+    <div class="container ">
+      <footer class="py-5">
+        <div class="row">
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Quick Links</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="{% url 'home' %}" class="nav-link p-0 text-muted">Home</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+            </ul>
+          </div>
+    
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Section</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+            </ul>
+          </div>
+    
+          <div class="col-6 col-md-2 mb-3">
+            <h5>Section</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+            </ul>
+          </div>
+    
+          <div class="col-md-5 offset-md-1 mb-3">
+            <form>
+              <h5>Subscribe to our newsletter</h5>
+              <p>Monthly digest of what's new and exciting from us.</p>
+              <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                <label for="newsletter1" class="visually-hidden">Email address</label>
+                <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                <button class="btn btn-primary" type="button">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    
+        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+          <p>© 2022 Company, Inc. All rights reserved.</p>
+          <ul class="list-unstyled d-flex">
+            <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+            <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+            <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+ 
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  
+
+
+  </body>
+</html>

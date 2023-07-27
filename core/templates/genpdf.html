@@ -1,0 +1,498 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>My PDF</title>
+    <style>
+      @media print {
+        /* Set the page orientation to landscape */
+        @page {
+          size: landscape;
+          /*size:8.5in 11in; margin: 2cm*/
+           /* Set the margin to default 
+           margin: inherit;*/
+           margin:0.5px;
+         
+
+
+          
+        }
+
+       
+       
+      }
+      
+      .outer-comp{
+        border: 18px solid rgb(115 115 213);
+        /*margin:0.3px;*/
+        padding-top:16px;
+        padding-bottom:16px;
+        padding-left:16px;
+
+        padding-right:16px;
+       
+        /*margin-left: 4.5rem;*/
+        height:100%;
+      }
+      .inner-comp{
+        border:2px solid #948e8e;
+        border-radius: 4px;
+        padding: 2.5vh;
+        height:auto;
+        margin:12px 0 12px 0;
+        padding-top:4.4vh;
+        padding-bottom:4.4vh;
+      
+      
+
+       
+      
+
+      }
+
+      .main-sub{
+        font-family:sans-serif;
+        font-size:16px;
+        line-height: 2;
+        
+      }
+      .header-data{
+        text-align:center;
+        font-family:Verdana;
+        margin:3px;
+        
+      }
+
+
+      @media print{
+        .outer-comp{
+          border: 12px solid #7373d5;
+        
+          margin-left:0.5px;
+          height:100%;
+
+          padding:2.7vh;
+         
+         
+       
+          border-width:20px;
+        }
+        .inner-comp{
+          border:5px solid #948e8e;
+          border-radius: 4px;
+          padding: 6%;
+          height:auto;
+         
+
+      
+          /*padding-top:4.4vh;
+          padding-bottom:4.4vh;*/
+        
+  
+        }
+  
+        .main-sub{
+          font-family:sans-serif;
+          font-size:18px;
+          line-height: 3;
+          
+          
+        }
+        .header-data{
+          text-align:center;
+          font-family:Verdana;
+          margin:4px;
+          
+        }
+      }
+    </style>
+</head>
+<body>
+   
+  
+  <div class="outer-comp">
+    <div class="inner-comp">
+{% block content %}
+<p class="main-sub">Certificate No. <b>{{data.certificate_no}}</b></p> <br>
+{{data.created_at|date:'Y/m/d'}}<br>
+
+ <h2 class="header-data">Google Certificate</h2>
+
+<p class="main-sub">  This is to certify that
+<b>{{data.name}}</b> <br>
+  has successfully completed the Google Kick Start Coding Competition 2023.
+  He is placed 1st in the Google Kick Start Coding Competition 2023, solving 5 problems correctly in 2 hours.<br></p>
+
+  <p class="signature">Signature</p>
+{% endblock content %}
+
+  </div>
+</div>
+  
+
+
+
+
+</body>
+</html> 
+
+ 
+
+ {% endcomment %}
+
+ {% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>My PDF</title>
+    <style>
+      @media print {
+        /* Set the page orientation to landscape */
+        @page {
+          size: landscape;
+          margin: 0;
+        }
+      }
+      
+      .outer-comp{
+        border: 18px solid rgb(115 115 213);
+        padding-top:16px;
+        padding-bottom:16px;
+        padding-left:18px;
+        padding-right:18px;
+        height:100%;
+      }
+      .inner-comp{
+        border:2px solid #948e8e;
+        border-radius: 4px;
+        padding: 3.5vh;
+        height:auto;
+        margin:12px 0 12px 0;
+        padding-top:3.4vh;
+        padding-bottom:3.4vh;
+      }
+
+      .main-sub{
+        font-family:sans-serif;
+        font-size:18px;
+        line-height: 3;  
+      }
+      .header-data{
+        text-align:center;
+        font-family:Verdana;
+        margin:3px; 
+        text-decoration:underline; 
+        font-size:22px;
+      }
+
+      @media print{
+        .outer-comp{
+          border: 12px solid #7373d5;
+          margin: 0 auto;
+          height:100%;
+          padding-top:16px;
+          padding-bottom:16px;
+          padding-left:18px;
+          padding-right:18px;
+          border-width:20px;
+        }
+        .inner-comp{
+          border:5px solid #948e8e;
+          border-radius: 4px;
+          padding: 3%;
+          height:auto;  
+        }
+  
+        .main-sub{
+          font-family:sans-serif;
+          font-size:18px;
+          line-height: 3;  
+        }
+        .header-data{
+          text-align:center;
+          font-family:Verdana;
+          margin:4px;
+          font-family:22px;  
+        }
+      }
+    </style>
+</head>
+<body> 
+  <div class="outer-comp">
+    <div class="inner-comp">
+{% block content %}
+<p class="main-sub">Certificate No. <b>{{data.certificate_no}}</b></p> <br>
+<span class="main-sub">{{data.created_at|date:'Y/m/d'}}<span><br>
+
+ <h2 class="header-data">Google Certificate</h2>
+
+<p class="main-sub">  This is to certify that
+<b>{{data.name}}</b> <br>
+  has successfully completed the Google Kick Start Coding Competition 2023.
+  He is placed 1st in the Google Kick Start Coding Competition 2023, solving 5 problems correctly in 2 hours.<br></p>
+
+  <p class="signature">Signature</p>
+{% endblock content %}
+
+  </div>
+</div>
+</body>
+</html> {% endcomment %}
+
+
+
+
+
+{% load static %}
+<html>
+	<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+		<style>
+		@media print{
+		  @page{
+		    size:landscape;
+			/*margin:initial;*/
+			margin:0.1px;
+		  }
+		  
+		  .outer-comp{
+		   border:22px solid blue;
+        border-width:20px;
+		   /*height:45.70rem;*/
+		   height:41.23rem;
+		   /*padding:12px 12px 12px 12px;*/
+		   padding:24px;
+		 
+		  
+		  
+       		  
+		  }
+		  
+		  .inner-comp{
+		   border:4px solid black;
+		   /*height:auto;
+		   padding:5px;*/
+		   
+		   margin:6px;
+		   padding:16px;
+		   height:36.70rem;
+		   
+		  }
+		  
+		  .da_certother{
+		  font-family:Open Sans;
+		  font-size:22px;
+		  text-wrap:wrap;
+		  }
+		  
+		  .header-data{
+		   font-size:41.34px;
+		   ; /*top ,right, bottom, left*/
+		   font-family:Great Vibes, Verdana, Sans-Serif;
+		   text-align:center;
+		   margin-bottom:18px;
+		   
+		  }
+		  
+		   .main-sub{
+		  font-family:Open Sans;
+		  line-height:2;
+		  font-size:22px;
+		  font-weight:500;
+		  text-wrap:wrap;
+		  }
+		  
+		  .f_container {
+		  display: flex;
+		  flex-direction: row;
+		  bottom:5px;
+		  
+		  }
+		  .items_div {
+		  flex: 1 1 0;
+		  /*border:1px solid black;*/
+		  width: 100px;
+		  height: 100px;
+		  text-align:center;
+		  /*spaciel put items to bottom of inner*/
+		  margin-top:4rem;
+		   /*height: 100px;*/
+		   height:auto;
+		  }
+		  
+		 .sign_item{
+		   width:5rem;
+		  
+		   float:left;
+		   margin:0.5rem;
+		   padding:0.3rem;
+		   
+		  }
+		  
+		  .seal_sta{
+		   width:5rem;
+		   margin-right:2.5rem;
+		   float:right;
+		  }
+		  
+		}
+		
+		.outer-comp{
+		   border:22px solid blue;
+           border-width:30px;
+		   /*height:45.70rem;*/
+	
+		   /*padding:12px 12px 12px 12px;*/
+		   padding:24px;
+		 
+		  
+		  
+       		  
+		  }
+		  
+		  .inner-comp{
+		   border:4px solid black;
+		   /*height:auto;
+		   padding:5px;*/
+		   
+		   margin:4px;
+		   padding:12px;
+		   height:36.70rem;
+		   
+		  }
+		  
+		  .da_certother{
+		  font-family:Open Sans;
+		  font-size:16px;
+		  text-wrap:wrap;
+		  }
+		  
+		  .header-data{
+		   font-size:41.34px;
+		   ; /*top ,right, bottom, left*/
+		   font-family:Great Vibes, Verdana, Sans-Serif;
+		   text-align:center;
+		   margin-bottom:18px;
+		   
+		  }
+		  
+		  .main-sub{
+		  font-family:Open Sans;
+		  line-height:2;
+		  font-size:16px;
+		  font-weight:500;
+		  text-wrap:wrap;
+		  }
+		  
+		  .f_container {
+		  display: flex;
+		  flex-direction: row;
+		  bottom:5px;
+		 
+		  
+		  
+		  }
+		  .items_div {
+		  flex: 1 1 0;
+		  /*border:1px solid black;*/
+		  width: 100px;
+		  /*height: 100px;*/
+		  height:auto;
+		  
+		
+		  
+		  /*spaciel put items to bottom of inner*/
+		  margin-top:4rem;
+		  }
+		  
+		  .signature{
+		    text-align:left;
+			font-size:18px;
+			
+			font-family:Open Sans;
+			padding:3px;
+			
+		  }
+		  .sign_item{
+		   width:7rem;
+		  
+		   float:left;
+		
+		   margin-right:25%;
+		   margin-top:-4%;
+		   
+		   z-index:1;
+		  
+		    
+		
+		   /*margin:0.5rem;
+		   padding:0.3rem;*/
+		  }
+		  
+		  .seal_sta{
+		   width:7rem;
+		   height:auto;
+		   position:fixed;
+		 
+		   /*top: 10px;*/
+		
+		  
+		   margin-right:1.5rem;
+		   margin-left:20%;
+		   
+		   z-index:1;
+		  
+		   float:right;
+		  }
+		  
+		
+		
+		
+		
+		
+		</style>
+    </head>
+	
+	<body>
+	
+	{% block content %}
+	<div class="outer-comp">
+	  <div class="inner-comp">
+	     <p class="da_certother">Certificate No. <b style="word-spacing:5px;">{{data.certificate_no}}</b></p>
+		 <p class="da_certother">{{data.issued_at|date:'Y/m/d'}}</p><br>
+		 {% if header.blank %}
+		 <h2 class="header-data">CertGen Certificate</h2>
+		 {% else %}
+		 <h2 class="header-data">{{data.header}}</h2>
+		 {% endif %}
+			 
+		 {% if not content.blank %}
+		 <p class="da_certother">Name: {{data.name}}</p><br>
+		 {% endif %}
+		 {% if content.blank %}
+		 <p class="main-sub">  This is to certify that <b>{{data.name}}</b> <br>
+			 has successfully completed the Google Kick Start Coding Competition 2023.
+			 He is placed 1st in the Google Kick Start Coding Competition 2023, solving 5 problems correctly in 2 hours.<br></p>
+		 {% else %}
+		 <p class="main-sub">{{data.content}}</p>
+		 {% endif %}
+		 <!--Flex-->
+			<div  class="f_container">
+				 <div class="items_div">
+					 <p class="signature">Signature & Authority <br>
+						 <img class="sign_item" src="{% static 'kindpng_7644473.png' %}"></p></div> 
+				<div class="items_div">
+				      <img class="seal_sta" src="{% static 'stamp-gdc3297010_640.png' %}" />
+				</div>
+			</div>
+		<!--Flex End/-->
+	  
+	  </div>
+		
+	</div>
+
+ 
+  {% endblock content %}
+	</body>
+</html>
